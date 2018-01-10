@@ -11,7 +11,7 @@ public class BotPremikanje : MonoBehaviour {
 
 	void Start () {
 		NavMeshAgentKomponenta = GetComponent<NavMeshAgent> (); 
-		mPlayerTransform = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Transform> ();
+		mPlayerTransform = GameObject.FindGameObjectWithTag ("Igralec").GetComponent<Transform> ();
 		mBotAnimator = GetComponent<Animator> ();
 	}
 

@@ -7,6 +7,10 @@ TagManager:
   - FxTemporaire
   - Bot
   - ZvokHoja
+  - Igralec
+  - FriendlyBullet
+  - EnemyBullet
+  - BotSpawnPoint
   layers:
   - Default
   - TransparentFX

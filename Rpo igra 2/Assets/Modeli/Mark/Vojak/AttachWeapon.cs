@@ -7,9 +7,9 @@ public class AttachWeapon : MonoBehaviour {
 	public Transform Weapon;
 
 	void Start () {
-//		Weapon.parent = attachPoint;
-//		Weapon.position = attachPoint.position;
-//		Weapon.rotation = attachPoint.rotation;
+		//Weapon.parent = attachPoint;
+		//Weapon.position = attachPoint.position;
+		//Weapon.rotation = attachPoint.rotation;
 	}
 
 }

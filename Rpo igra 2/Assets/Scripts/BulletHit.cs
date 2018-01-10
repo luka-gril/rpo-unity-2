@@ -13,19 +13,13 @@ public class BulletHit : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){ // ko zazna da trčita dva predmeta se avtomatsko kliče ta metoda
-		if(collision.gameObject.CompareTag("Bot")){ // če je krogla zadela bota ...
-			Destroy (collision.gameObject); // ... uničimo bota
+		if(collision.gameObject.CompareTag("Bot")){
+			collision.gameObject.GetComponent<BotHealth> ().TakeHealth (10);
 		}
 		GameObject Effect = Instantiate (Efekt, gameObject.transform.position, gameObject.transform.rotation); // spawnamo vizualni efekt ko krogla zadene nekaj
 		Destroy (Effect, 0.5f);
 		Destroy(gameObject); // uničimo kroglo
 	}
-
-	/*
-	 * OPOMBA:
-	 * Efekt deluje ampak je malo zamaknjen, bom do naslednjič pogledal kaj je težava
-	 * Komentarje lahko daš ven iz te kode pa jih prepišeš v poročilo če hočeš 
-	 * 
-	 */
+		
 
 }

@@ -6,8 +6,8 @@ public class MenjavaPogleda : MonoBehaviour {
 
 	private int nastavljenPogled = 1; // belezimo trenutni pogled
 
-	private Vector3 pogled1 = new Vector3 (0f, 3f, -4.15f); 
-	private Vector3 rotacija1 = new Vector3 (19.38f, 0f, 0f);
+	private Vector3 pogled1 = new Vector3 (0f, 2.64f, -4.15f); 
+	private Vector3 rotacija1 = new Vector3 (11.68f, 0f, 0f);
 
 	private Vector3 pogled2 = new Vector3 (0f, 2.1f, -2.2f);
 	private Vector3 rotacija2 = new Vector3 (19f, 0f, 0.16f);
