@@ -24,7 +24,9 @@ public class Shoot : MonoBehaviour {
 		GameObject ostanekMetka = Instantiate (OstanekMetka, gameObject.transform.position, Quaternion.identity);
 		ostanekMetka.GetComponent<Rigidbody> ().AddTorque (new Vector3 (1, 1, 1) * Random.Range (-20, 20)); // doda ostanku metka neko random rotacijo da se malo vrtijo v zraku
 		Destroy (ostanekMetka, 3f); // uniči ostanek metka čez 3 sekunde
-		metek.GetComponent<Rigidbody> ().AddForce (metek.transform.forward * 500f);
+		metek.GetComponent<Rigidbody> ().AddForce (metek.transform.forward * 1000f);
+
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<AudioSource> ().Play ();
 	}
 
 
