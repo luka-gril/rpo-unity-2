@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class LevelManager : MonoBehaviour {
 
@@ -33,7 +34,7 @@ public class LevelManager : MonoBehaviour {
 
 	void Update(){
 		playingTime += Time.deltaTime; 
-		//BotTimer += Time.deltaTime; 
+		BotTimer += Time.deltaTime; 
 		if ((BotTimer >= BotSpawnTime) && SpawnedBots < BotsNumber) {  
 			SpawnBot (); 
 		}
@@ -49,33 +50,41 @@ public class LevelManager : MonoBehaviour {
 
 	public void CheckWin(){ 
 		bool victoryCondition1 = GameObject.FindGameObjectsWithTag ("Bot").Length == 0; 
-		bool victoryCondition2 = SpawnedBots == BotsNumber; 
+		bool victoryCondition2 = (SpawnedBots == BotsNumber); 
 		if (victoryCondition1 && victoryCondition2) { 
 			GameWon (); 
 		}
 	}
 
 	public void PlayerKilled(){ 
-		GameOver (); 
+		GameOver ();
 	}
 
 	private void GameOver(){
-		GAME_RUNNING = false;  
-		StateText.text = "YOU LOST!"; 
-		ResultText.text = string.Empty;
-		StartCoroutine (BackToMenu ());
+		if (GAME_RUNNING) {
+			GAME_RUNNING = false;  
+			StateText.text = "YOU LOST!"; 
+			ResultText.text = string.Empty;
+			WriteResultToTextFile (); 
+			StartCoroutine (BackToMenu ());
+		}
 	}
 
 	private void GameWon(){
-		GAME_RUNNING = false; 
-		StateText.text = "YOU WON!"; 
-		ResultText.text = "Result: " + playingTime.ToString(); 
-		WriteResultToTextFile (); 
-		StartCoroutine (BackToMenu ());
+		if (GAME_RUNNING) {
+			GAME_RUNNING = false; 
+			StateText.text = "YOU WON!"; 
+			ResultText.text = "Result: " + playingTime.ToString ("n2"); 
+			WriteResultToTextFile (); 
+			StartCoroutine (BackToMenu ());
+		}
 	}
 
 	private void WriteResultToTextFile(){
-		// ZA NAREDIT ŠE: Zapisat rezultat (playingTime) v neko tekstovno datoteko, da jo bo potem brala naša aplikacija 
+		string filePath = Application.dataPath + "/Results.txt";
+		using (StreamWriter streamWriter = File.AppendText(filePath)) {
+			streamWriter.WriteLine (playingTime.ToString("n2"));
+		}	
 	}
 
 	private IEnumerator BackToMenu(){

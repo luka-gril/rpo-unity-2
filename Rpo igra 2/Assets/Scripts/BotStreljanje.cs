@@ -22,7 +22,7 @@ public class BotStreljanje : MonoBehaviour {
 		GameObject bullet = (GameObject) Instantiate (Bullet, gameObject.transform.position, gameObject.transform.rotation);
 		Vector3 direction = (igralec.transform.position - gameObject.transform.position).normalized;
 		direction.y = 0f;
-		bullet.GetComponent<Rigidbody> ().AddForce (direction * 400f);
+		bullet.GetComponent<Rigidbody> ().AddForce (direction * 50f);
 		gameObject.GetComponent<AudioSource> ().Play ();
 	}
 
